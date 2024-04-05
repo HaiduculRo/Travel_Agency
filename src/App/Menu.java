@@ -73,6 +73,7 @@ public final class Menu {
                 case 9 -> serviceHotel.addRoomToHotel();
                 case 10 -> serviceVacation.createVacation();
                 case 11 -> serviceVacation.listVacation();
+                case 12 -> serviceVacation.lastMinute();
                 default -> {
                 }
 

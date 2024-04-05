@@ -31,8 +31,8 @@ public class Service_CityTax {
         return instance;
     }
     public void addData(){
-        citytaxList.add(new CityTax("1","1",2));
-        citytaxList.add(new CityTax("2","2",2));
+        citytaxList.add(new CityTax("Barcelona","Spain",2));
+        citytaxList.add(new CityTax("Madrid","Spain",2));
     }
 
     public void listCityTax() {

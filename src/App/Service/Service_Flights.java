@@ -34,10 +34,10 @@ public class Service_Flights{
     }
 
     public void addData(){
-        planeList.add(new Plane(1000.0, LocalDateTime.of(2024, 4, 10, 8, 30), LocalDateTime.of(2024, 4, 10, 10, 0), "1", "2"));
-        planeList.add(new Plane(1200.0, LocalDateTime.of(2024, 4, 11, 10, 0), LocalDateTime.of(2024, 4, 11, 12, 30), "1", "2"));
-        planeList.add(new Plane(1500.0, LocalDateTime.of(2024, 4, 12, 12, 0), LocalDateTime.of(2024, 4, 12, 14, 30), "2", "1"));
-        planeList.add(new Plane(1100.0, LocalDateTime.of(2024, 4, 17, 14, 0), LocalDateTime.of(2024, 4, 17, 17, 30), "2", "1"));
+        planeList.add(new Plane(1000.0, LocalDateTime.of(2024, 4, 10, 8, 30), LocalDateTime.of(2024, 4, 10, 10, 0), "Bucharest", "Madrid"));
+        planeList.add(new Plane(1200.0, LocalDateTime.of(2024, 4, 11, 10, 0), LocalDateTime.of(2024, 4, 11, 12, 30), "Bucharest", "Barcelona"));
+        planeList.add(new Plane(1500.0, LocalDateTime.of(2024, 4, 12, 12, 0), LocalDateTime.of(2024, 4, 12, 14, 30), "Madrid", "Bucharest"));
+        planeList.add(new Plane(1100.0, LocalDateTime.of(2024, 4, 17, 14, 0), LocalDateTime.of(2024, 4, 17, 17, 30), "Barcelona", "Bucharest"));
     }
     public void addFlight() {
         planeList.add(reader.readPlane());

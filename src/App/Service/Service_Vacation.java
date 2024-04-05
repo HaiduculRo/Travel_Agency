@@ -4,6 +4,7 @@ import App.Reader;
 import Models.CityTax.CityTax;
 import Models.Vacation.Vacation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -104,5 +105,17 @@ public class Service_Vacation {
         System.out.println(city_tax_per_night);
         vac.addCityTaxToPrice(city_tax_per_night);
         vacationList.add(vac);
+    }
+
+    public void lastMinute() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate oneWeekFromNow = currentDate.plusDays(7);
+        System.out.println("Vacation departing within next 7 days: ");
+        for (Vacation vacation : vacationList) {
+            LocalDate departureDate = vacation.getStartPlane().getMomentOfFlight().toLocalDate();
+            if (currentDate.isBefore(departureDate) && oneWeekFromNow.isAfter(departureDate)) {
+                System.out.println(vacation);
+            }
+        }
     }
 }

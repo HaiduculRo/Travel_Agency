@@ -49,8 +49,8 @@ public class Service_Hotel {
     }
 
     public void addData(){
-        hotelList.add(new Resort("Babilon",5,"2","2",null,2));
-        hotelList.add(new Resort("Samba",5,"1","1",null,20));
+        hotelList.add(new Resort("Babilon",5,"Spain","Barcelona",null,2));
+        hotelList.add(new Resort("Samba",5,"Spain","Madrid",null,20));
     }
     public void addHotel() {
         Hotel new_hotel = reader.readHotel();
