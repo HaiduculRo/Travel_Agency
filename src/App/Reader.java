@@ -82,15 +82,20 @@ public final class Reader {
     private Hotel readResortDetails() {
         Scanner read = new Scanner(System.in);
         System.out.println("Enter details for Resort:");
-        System.out.println("Number of pools: ");
+
+        System.out.println("Name:");
         String name = read.nextLine();
+
         System.out.print("Number of stars: ");
         int stars = read.nextInt();
+
         read.nextLine(); // Consumă newline
         System.out.print("Country: ");
         String country = read.nextLine();
+
         System.out.print("City: ");
         String city = read.nextLine();
+
         System.out.print("Type of meal: all inclusive \n");
         System.out.print("Number of pools: ");
         int numberOfPools = read.nextInt();

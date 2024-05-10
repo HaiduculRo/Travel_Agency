@@ -39,8 +39,10 @@ public class Service_CityTax {
         int i = 0;
         System.out.println("__CITY TAXES__ \n");
         for (CityTax cityTax : citytaxList) {
+            i++;
             System.out.println("NR." + i);
             System.out.println(cityTax);
+
         }
     }
     public void addCityTax() {
@@ -50,6 +52,7 @@ public class Service_CityTax {
         Scanner read = new Scanner(System.in);
         listCityTax();
         int select_city,select_option  = -1;
+        System.out.println("\nAlegeti taxa de oras pe care doriti sa o editati:");
         select_city = read.nextInt();
         System.out.println("\n --------------------- \n EDIT MENU \n ---------------------");
         while(select_option != 0) {
@@ -58,6 +61,7 @@ public class Service_CityTax {
             System.out.println("3 -> Tax per night");
             System.out.println("0 -> EXIT");
             select_option = read.nextInt();
+            read.nextLine();
 
             switch (select_option) {
                 case 1:
@@ -65,14 +69,17 @@ public class Service_CityTax {
                     String name = read.nextLine();
                     citytaxList.get(select_city).setCity(name);
                     break;
+
                 case 2:
                     System.out.print("Enter new country name: ");
                     String country = read.nextLine();
                     citytaxList.get(select_city).setCountry(country);
                     break;
+
                 case 3:
                     System.out.print("Enter new tax price per night: ");
                     int tax = read.nextInt();
+                    read.nextLine(); // Consumă linia goală rămasă din buffer
                     citytaxList.get(select_city).setTax_price_per_night(tax);
                     break;
                 default:
