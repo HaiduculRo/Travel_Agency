@@ -4,7 +4,9 @@ import Models.Room.*;
 import Models.Hotel.*;
 import Models.CityTax.*;
 import Models.Vacation.Vacation;
+import Repository.HotelRepositoryService;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
@@ -71,23 +73,39 @@ public final class Reader {
         String country = read.nextLine();
         System.out.print("City: ");
         String city = read.nextLine();
-        System.out.print("all_inclusive or breakfast or half_board");
-        System.out.print("Type of meal: ");
+        System.out.print("Type of meal (all_inclusive, breakfast, half_board): ");
         String mealType = read.nextLine();
 
-        return new Hotel(name,stars, country, city, null, mealType);
+        Hotel hotel = new Hotel(name, stars, country, city, null, mealType);
+
+        // Adaugă hotelul în baza de date
+        try {
+            HotelRepositoryService hotelRepositoryService = HotelRepositoryService.getInstance();
+            hotelRepositoryService.insertHotel(hotel);
+            System.out.println("Hotel added successfully to the database.");
+        } catch (SQLException e) {
+            System.out.println("Failed to add hotel to the database.");
+            e.printStackTrace();
+        }
+
+        return hotel;
     }
 
 
-    private Hotel readResortDetails() {
+    private Resort readResortDetails() {
         Scanner read = new Scanner(System.in);
         System.out.println("Enter details for Resort:");
 
-        System.out.println("Name:");
+        System.out.print("Name:");
         String name = read.nextLine();
 
-        System.out.print("Number of stars: ");
+        System.out.print("Number of stars (4 or 5): ");
         int stars = read.nextInt();
+        while(stars != 4 && stars != 5) { // Changed || to &&
+            System.out.println("Number of stars must be 4 or 5: ");
+            read.nextLine(); // Consumă newline
+            stars = read.nextInt();
+        }
 
         read.nextLine(); // Consumă newline
         System.out.print("Country: ");
@@ -100,8 +118,22 @@ public final class Reader {
         System.out.print("Number of pools: ");
         int numberOfPools = read.nextInt();
 
-        return new Resort(name, stars, country, city,  null, numberOfPools);
+        Resort resort = new Resort(name, stars, country, city,  null, numberOfPools);
+
+        // Adăugarea resortului în baza de date
+        try {
+            HotelRepositoryService hotelRepositoryService = HotelRepositoryService.getInstance();
+            hotelRepositoryService.insertResort(resort);
+            System.out.println("Resort added successfully to the database.");
+        } catch (SQLException e) {
+            System.out.println("Failed to add resort to the database.");
+            e.printStackTrace();
+        }
+
+        return resort;
     }
+
+
     public Plane readPlane() {
         Scanner read = new Scanner(System.in);
         Plane plane = null;

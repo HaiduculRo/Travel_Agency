@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Service_Vacation {
-    List<Vacation> vacationList = new ArrayList<>();
+    static List<Vacation> vacationList = new ArrayList<>();
     Reader reader = Reader.getInstance();
 
     Service_CityTax serviceCityTax = Service_CityTax.getInstance();
@@ -105,6 +105,7 @@ public class Service_Vacation {
         System.out.println(city_tax_per_night);
         vac.addCityTaxToPrice(city_tax_per_night);
         vacationList.add(vac);
+        AuditService.writeAudit("create vacation");
     }
 
     public void lastMinute() {

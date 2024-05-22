@@ -33,6 +33,9 @@ public class Hotel {
         }
     }
 
+
+
+
     private boolean isValidTipMasa(String tipMasa) {
         for (String valoare : VALORI_TIP_MASA) {
             if (valoare.equalsIgnoreCase(tipMasa)) {

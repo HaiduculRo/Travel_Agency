@@ -1,9 +1,6 @@
 package App;
 
-import App.Service.Service_CityTax;
-import App.Service.Service_Flights;
-import App.Service.Service_Hotel;
-import App.Service.Service_Vacation;
+import App.Service.*;
 
 import java.util.Scanner;
 
@@ -47,15 +44,16 @@ public final class Menu {
         System.out.println("10: Add a Vacations");
         System.out.println("11: SHOW all Vacation");
         System.out.println("12: LAST MINUTE OFFERT");
-
+        System.out.println("13: Sterge ZBOR");
+        System.out.println("14: Sterge Taxa ");
+        System.out.println("15: Sterge Unitate de Cazare ");
+        System.out.println("16: EDIT ZBOR ");
+        System.out.println("0 : EXIT ");
     }
 
     public void runMenu() {
         int op;
         Scanner scanner = new Scanner(System.in);
-        serviceCityTax.addData();
-        serviceFlights.addData();
-        serviceHotel.addData();
         do {
             textMenu();
             System.out.print("Please insert your option: ");
@@ -63,20 +61,28 @@ public final class Menu {
             System.out.println("-----------------------------------------------");
             switch (op){
                 case 1 -> serviceFlights.addFlight();
-                case 2 -> serviceFlights.listPlanes();
+                case 2 -> {     serviceFlights.listPlanes();  AuditService.writeAudit("list_Planes");}
                 case 3 -> serviceCityTax.addCityTax();
-                case 4 -> serviceCityTax.listCityTax();
+                case 4 -> {     serviceCityTax.listCityTax(); AuditService.writeAudit("list_CityTax");}
                 case 5 -> serviceCityTax.editCityTask();
                 case 6 -> serviceHotel.addHotel();
-                case 7 -> serviceHotel.listHotels();
-                case 8 -> serviceHotel.listHotelsByCity();
+                case 7 -> {     serviceHotel.listHotels(); AuditService.writeAudit("list Hotels");}
+                case 8 -> {     serviceHotel.listHotelsByCity(); AuditService.writeAudit("list Hotels by City");}
                 case 9 -> serviceHotel.addRoomToHotel();
                 case 10 -> serviceVacation.createVacation();
-                case 11 -> serviceVacation.listVacation();
-                case 12 -> serviceVacation.lastMinute();
-                default -> {
+                case 11 -> {    serviceVacation.listVacation(); AuditService.writeAudit("listVacation");}
+                case 12 -> {serviceVacation.lastMinute(); AuditService.writeAudit("list last minute"); }
+                case 13 -> serviceFlights.deleteFlight();
+                case 14 -> serviceCityTax.deleteCityTax();
+                case 15 -> serviceHotel.deleteHotel();
+                case 16 -> serviceFlights.editFlight();
+                case 0 -> {
+                    System.out.println("Va mai asteptam !");
+                    return;
                 }
-
+                default -> {
+                    System.out.println("Optiune Invalida !!!");
+                }
             }
         }
         while (op != 0);

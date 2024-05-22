@@ -17,15 +17,6 @@ public abstract sealed class Room implements Cloneable permits Suite_Room,Apartm
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "Room {" +
-                "persons: " + persons + '\'' +
-                ", view: '" + view + '\'' +
-                ", size_m2: " + size_m2 + '\'' +
-                ", price: " + price +
-                '}';
-    }
 
     public int getPersons() {
         return persons;
@@ -37,5 +28,15 @@ public abstract sealed class Room implements Cloneable permits Suite_Room,Apartm
 
     public int getSize_m2() {
         return size_m2;
+    }
+
+    @Override
+    public String toString() {
+        return "Room {" +
+                "persons: " + persons + '\'' +
+                ", view: '" + view + '\'' +
+                ", size_m2: " + size_m2 + '\'' +
+                ", price: " + price +
+                '}';
     }
 }

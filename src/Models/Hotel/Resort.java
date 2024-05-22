@@ -1,22 +1,19 @@
 package Models.Hotel;
+
 import Models.Room.Room;
 
 public final class Resort extends Hotel {
     private final int nr_piscine;
 
     public Resort(String name, int nrStele, String tara, String city, Room[] camere, int nr_piscine) {
-        super(name,validateNrStele(nrStele), tara, city, camere, "all_inclusive");
+        super(name, nrStele, tara, city, camere, "all_inclusive");
         this.nr_piscine = nr_piscine;
     }
 
-    // Metodă pentru a valida numărul de stele
-    private static int validateNrStele(int nrStele) {
-        if (nrStele == 4 || nrStele == 5) {
-            return nrStele;
-        } else {
-            throw new IllegalArgumentException("Numărul de stele trebuie să fie 4 sau 5.");
-        }
+    public int getNrPiscine() {
+        return nr_piscine;
     }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -37,7 +34,4 @@ public final class Resort extends Hotel {
         sb.append("}");
         return sb.toString();
     }
-
-
-
 }
